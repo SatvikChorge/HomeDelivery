@@ -91,6 +91,7 @@ app.delete("/api/products/:id", (req, res) => {
 // ORDERS
 app.post("/api/orders", (req, res) => {
   const {
+    userID,
     totalPrice,
     paymentMethod,
     customerName,
@@ -102,7 +103,7 @@ app.post("/api/orders", (req, res) => {
   } = req.body;
 
   const orderSql =
-    "INSERT INTO orders (totalPrice, paymentMethod, customerName, phone, address, city, pincode) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    "INSERT INTO orders (userID, totalPrice, paymentMethod, customerName, phone, address, city, pincode) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
   db.query(
     orderSql,
@@ -402,6 +403,27 @@ app.get("/api/admin/revenue-chart", (req, res) => {
       if (err) return res.status(500).json({ error: err.message });
       res.json(data);
     });
+});
+
+app.get("/api/orders/user/:userId", (req, res) => {
+  const { userId } = req.params;
+
+  const sql = `
+    SELECT *
+    FROM orders
+    WHERE userId = ?
+    ORDER BY id DESC
+  `;
+
+  db.query(sql, [userId], (err, data) => {
+    if (err) {
+      return res.status(500).json({
+        error: err.message,
+      });
+    }
+
+    res.json(data);
+  });
 });
 
 app.listen(PORT, () => {

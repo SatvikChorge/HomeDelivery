@@ -72,3 +72,6 @@ CREATE TABLE reviews (
 
 ALTER TABLE products
 ADD stock INT DEFAULT 10;
+
+ALTER TABLE orders
+ADD userId INT;
