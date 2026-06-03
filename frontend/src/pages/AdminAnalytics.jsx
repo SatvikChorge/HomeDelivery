@@ -25,20 +25,20 @@ function AdminAnalytics() {
   const [lowStockProducts, setLowStockProducts] = useState([]);
   useEffect(() => {
     async function fetchData() {
-      const statsRes = await axios.get("http://localhost:5000/api/admin/stats");
+      const statsRes = await axios.get("https://homedelivery-1.onrender.com/api/admin/stats");
       setStats(statsRes.data);
 
       const ordersRes = await axios.get(
-        "http://localhost:5000/api/admin/recent-orders"
+        "https://homedelivery-1.onrender.com/api/admin/recent-orders"
       );
       setRecentOrders(ordersRes.data);
 
       const chartRes = await axios.get(
-        "http://localhost:5000/api/admin/revenue-chart"
+        "https://homedelivery-1.onrender.com/api/admin/revenue-chart"
       );
       setChartData(chartRes.data);
 
-      const productsRes = await axios.get("http://localhost:5000/api/products");
+      const productsRes = await axios.get("https://homedelivery-1.onrender.com/api/products");
       
       const lowStock = productsRes.data.filter(
             (product) => Number(product.stock) <= 5
