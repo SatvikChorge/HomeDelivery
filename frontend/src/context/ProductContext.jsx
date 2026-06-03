@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 
 const ProductContext = createContext();
 
-const API_URL = "http://localhost:5000/api/products";
+const API_URL = "https://homedelivery-1.onrender.com/api/products";
 
 export function ProductProvider({ children }) {
   const [products, setProducts] = useState([]);

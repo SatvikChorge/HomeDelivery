@@ -56,7 +56,7 @@ function AddProduct() {
     imageData.append("image", imageFile);
 
     const uploadRes = await axios.post(
-      "http://localhost:5000/api/upload",
+      "https://homedelivery-1.onrender.com/api/upload",
       imageData,
       {
         headers: {

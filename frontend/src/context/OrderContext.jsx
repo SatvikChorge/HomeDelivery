@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 
 const OrderContext = createContext();
 
-const API_URL = "http://localhost:5000/api/orders";
+const API_URL = "http://lhttps://homedelivery-1.onrender.comocalhost:5000/api/orders";
 
 export function OrderProvider({ children }) {
   const [orders, setOrders] = useState([]);

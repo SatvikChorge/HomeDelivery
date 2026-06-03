@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 
 const ReviewContext = createContext();
 
-const API_URL = "http://localhost:5000/api/reviews";
+const API_URL = "https://homedelivery-1.onrender.com/api/reviews";
 
 export function ReviewProvider({ children }) {
   async function addReview(productId, review) {
